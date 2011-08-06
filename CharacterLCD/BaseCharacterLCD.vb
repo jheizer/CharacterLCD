@@ -67,6 +67,8 @@ Public MustInherit Class BaseCharacterLCD
     Public MustOverride Function SetBackgroundBrightness(ByVal Brightness As Byte) As Boolean
     Public MustOverride Function SetContrast(ByVal Contrast As Byte) As Boolean
 
+    Public MustOverride Function SetRemember(ByVal Remember As Boolean) As Boolean
+
     Public MustOverride Function DisplayText(ByVal Text As String) As Boolean
 
     Public MustOverride Function SetAutoScroll(ByVal AutoScrollOn As Boolean) As Boolean

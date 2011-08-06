@@ -23,45 +23,18 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             comport.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames)
-            If comport.Items.Count > 0 Then
-                comport.SelectedIndex = 0
-                connect_Click(Nothing, Nothing)
-            End If
         Catch ex As Exception
         End Try
     End Sub
 
-    Private Sub connect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles connect.Click
-        LCD = New CharacterLCD.MatrixObrital
-        LCD.SetPortName(comport.SelectedItem)
-        LCD.Initalize()
-
-        LCD.SaveStartupCustomCharater(0, New Byte() {0, 1, 6, 8, 9, 18, 28, 28})
-        LCD.SaveStartupCustomCharater(1, New Byte() {15, 16, 7, 24, 0, 0, 24, 12})
-        LCD.SaveStartupCustomCharater(2, New Byte() {30, 1, 28, 3, 0, 0, 6, 12})
-        LCD.SaveStartupCustomCharater(3, New Byte() {0, 16, 12, 2, 18, 9, 5, 7})
-        LCD.SaveStartupCustomCharater(4, New Byte() {28, 4, 2, 1, 0, 0, 0, 0})
-        LCD.SaveStartupCustomCharater(5, New Byte() {0, 0, 0, 3, 24, 7, 0, 0})
-        LCD.SaveStartupCustomCharater(6, New Byte() {0, 0, 24, 0, 3, 28, 0, 0})
-        LCD.SaveStartupCustomCharater(7, New Byte() {7, 4, 8, 48, 0, 0, 0, 0})
-
-        LCD.SaveStartupMessage(New Byte() {32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, _
-                                           32, 32, 32, 0, 1, 2, 3, 32, 32, 79, 80, 69, 78, 32, 32, 32, 32, 32, 32, 32, _
-                                           32, 32, 32, 4, 5, 6, 7, 32, 32, 32, 32, 77, 79, 66, 73, 76, 69, 32, 32, 32, _
-                                           32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32})
-
-        LCD.SetGPOStartupState(0, CharacterLCD.GPOState.OffState)
-        LCD.SetGPOStartupState(1, CharacterLCD.GPOState.OffState)
-        LCD.SetGPOStartupState(2, CharacterLCD.GPOState.OffState)
-        LCD.SetGPOStartupState(3, CharacterLCD.GPOState.OffState)
-        LCD.SetGPOStartupState(4, CharacterLCD.GPOState.OffState)
-        LCD.SetGPOStartupState(5, CharacterLCD.GPOState.OffState)
-        LCD.SetGPOStartupState(6, CharacterLCD.GPOState.OffState)
-        LCD.SetGPOStartupState(7, CharacterLCD.GPOState.OffState)
-    End Sub
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        LCD = New CharacterLCD.LCDEmulator
+        Select Case LCDType.SelectedIndex
+            Case Is = 0
+                LCD = New CharacterLCD.MatrixObrital
+                LCD.SetPortName(comport.SelectedItem)
+            Case Is = 1
+                LCD = New CharacterLCD.LCDEmulator
+        End Select
         LCD.Initalize()
     End Sub
 

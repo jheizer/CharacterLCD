@@ -144,6 +144,9 @@ Public Class LCDEmulator
         Return Drawing.Color.Yellow
     End Function
 
+    Public Overrides Function SetRemember(ByVal Remember As Boolean) As Boolean
+        Return True
+    End Function
 
     Public Overrides Function SetKeyPadBackLight(ByVal LightOn As Boolean) As Boolean
 

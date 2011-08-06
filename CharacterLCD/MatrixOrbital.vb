@@ -47,7 +47,7 @@ Public Class MatrixObrital
                 End If
             Next
         End If
-        Return WriteData(txt)
+        Return WriteData(Txt)
     End Function
 
     Public Overrides Function CreateCustomCharater(ByVal Id As Byte, ByVal Data() As Byte) As Boolean
@@ -187,6 +187,12 @@ Public Class MatrixObrital
         Next
     End Function
 
+    Public Overrides Function SetRemember(ByVal Remember As Boolean) As Boolean
+        If Remember Then
+            Return WriteData(Cmd.CommandStart, Cmd.Remember, 1)
+        End If
+        Return WriteData(Cmd.CommandStart, Cmd.Remember, 0)
+    End Function
 
     Public Function WriteData(ByVal ParamArray Cmd As Byte()) As Boolean
         If m_Port Is Nothing OrElse (Not m_Port.IsOpen) Then
@@ -251,6 +257,8 @@ Public Class MatrixObrital
         SetAndSaveKeypadBrightness = 157
         SetKeypadBrightness = 156
         KeypadBacklightOff = 155
+
+        Remember = 147
     End Enum
 
     Enum Button As Byte
