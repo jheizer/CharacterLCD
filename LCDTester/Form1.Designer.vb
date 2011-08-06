@@ -22,7 +22,6 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.connect = New System.Windows.Forms.Button
         Me.comport = New System.Windows.Forms.ComboBox
         Me.turnoff = New System.Windows.Forms.Button
         Me.turnon = New System.Windows.Forms.Button
@@ -53,7 +52,6 @@ Partial Class Form1
         Me.led3yellow = New System.Windows.Forms.RadioButton
         Me.led3green = New System.Windows.Forms.RadioButton
         Me.led3red = New System.Windows.Forms.RadioButton
-        Me.Label7 = New System.Windows.Forms.Label
         Me.Button1 = New System.Windows.Forms.Button
         Me.Button2 = New System.Windows.Forms.Button
         Me.Button3 = New System.Windows.Forms.Button
@@ -62,6 +60,7 @@ Partial Class Form1
         Me.Button4 = New System.Windows.Forms.Button
         Me.Keys = New System.Windows.Forms.TextBox
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
+        Me.LCDType = New System.Windows.Forms.ComboBox
         CType(Me.brightness, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.contrast, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.red, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,15 +72,6 @@ Partial Class Form1
         CType(Me.KeypadBrightness, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'connect
-        '
-        Me.connect.Location = New System.Drawing.Point(139, 10)
-        Me.connect.Name = "connect"
-        Me.connect.Size = New System.Drawing.Size(134, 23)
-        Me.connect.TabIndex = 0
-        Me.connect.Text = "Connect Matrix Orbital"
-        Me.connect.UseVisualStyleBackColor = True
         '
         'comport
         '
@@ -402,21 +392,13 @@ Partial Class Form1
         Me.led3red.Text = "Red"
         Me.led3red.UseVisualStyleBackColor = True
         '
-        'Label7
-        '
-        Me.Label7.Location = New System.Drawing.Point(279, 15)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(100, 23)
-        Me.Label7.TabIndex = 21
-        Me.Label7.Text = "OR"
-        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(308, 10)
+        Me.Button1.Location = New System.Drawing.Point(266, 10)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(134, 23)
         Me.Button1.TabIndex = 22
-        Me.Button1.Text = "Connect Test LCD"
+        Me.Button1.Text = "Connect"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
@@ -460,11 +442,11 @@ Partial Class Form1
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(354, 52)
+        Me.Button4.Location = New System.Drawing.Point(298, 52)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(103, 23)
+        Me.Button4.Size = New System.Drawing.Size(154, 23)
         Me.Button4.TabIndex = 27
-        Me.Button4.Text = "FakeSensorTest"
+        Me.Button4.Text = "Cycle Fake Sensor Test"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Keys
@@ -488,11 +470,21 @@ Partial Class Form1
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Keypad"
         '
+        'LCDType
+        '
+        Me.LCDType.FormattingEnabled = True
+        Me.LCDType.Items.AddRange(New Object() {"Matrix Orbital", "Test Emulator"})
+        Me.LCDType.Location = New System.Drawing.Point(139, 12)
+        Me.LCDType.Name = "LCDType"
+        Me.LCDType.Size = New System.Drawing.Size(121, 21)
+        Me.LCDType.TabIndex = 30
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(955, 456)
+        Me.Controls.Add(Me.LCDType)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
@@ -503,7 +495,6 @@ Partial Class Form1
         Me.Controls.Add(Me.contrast)
         Me.Controls.Add(Me.brightness)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
@@ -517,7 +508,6 @@ Partial Class Form1
         Me.Controls.Add(Me.turnon)
         Me.Controls.Add(Me.turnoff)
         Me.Controls.Add(Me.comport)
-        Me.Controls.Add(Me.connect)
         Me.Name = "Form1"
         Me.Text = "Character LCD Tester"
         CType(Me.brightness, System.ComponentModel.ISupportInitialize).EndInit()
@@ -538,7 +528,6 @@ Partial Class Form1
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents connect As System.Windows.Forms.Button
     Friend WithEvents comport As System.Windows.Forms.ComboBox
     Friend WithEvents turnoff As System.Windows.Forms.Button
     Friend WithEvents turnon As System.Windows.Forms.Button
@@ -569,7 +558,6 @@ Partial Class Form1
     Friend WithEvents led1off As System.Windows.Forms.RadioButton
     Friend WithEvents led2off As System.Windows.Forms.RadioButton
     Friend WithEvents led3off As System.Windows.Forms.RadioButton
-    Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
@@ -578,5 +566,6 @@ Partial Class Form1
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Keys As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents LCDType As System.Windows.Forms.ComboBox
 
 End Class
