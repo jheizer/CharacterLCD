@@ -26,8 +26,10 @@ Public Class MatrixObrital
     Private m_ComPort As String
 
     Public Overrides Function Initalize() As Boolean
-        m_Port = New SerialPort(m_ComPort, 19200, Parity.None, 8, StopBits.One)
-        m_Port.Open()
+        If Not String.isnullorempty(m_comport) Then
+            m_Port = New SerialPort(m_ComPort, 19200, Parity.None, 8, StopBits.One)
+            m_Port.Open()
+        End If
     End Function
 
     Public Overrides Function CloseConnection() As Boolean
